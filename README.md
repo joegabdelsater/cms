@@ -1,5 +1,5 @@
-# cms
-Content mangement system
+# XTND CMS
+A simple content management system for laravel 
 
 # Step 1
 Install the package via composer using "composer require xtnd/cms"
