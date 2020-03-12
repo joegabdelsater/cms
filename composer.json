@@ -4,7 +4,7 @@
         "description": "Content management system for laravel 5.6.*",
         "keywords": ["cms"],
         "homepage": "https://github.com/joegabdelsater/cms",
-        "license": "",
+        "license": "MIT",
         "authors": [
             {
                 "name": "Joe Abdel Sater",
