@@ -1,0 +1,10 @@
+{"name": "devdojo/calculator",
+    "description": "This demo package will do some calculations",
+    "authors": [
+        {
+            "name": "Tony lea",
+            "email": "tony@devdojo.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}}
