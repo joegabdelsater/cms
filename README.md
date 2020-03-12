@@ -43,7 +43,7 @@ To create your first CMS user, go to the following route:
 
 And voila! You're all set.
 
-#IMPORTANT:
+# IMPORTANT:
 every time you add a table, or column, you need to run these 2 routes while logged in, to configure the cms:
 
 /cms/configure
