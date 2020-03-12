@@ -36,4 +36,17 @@ Run the following command in terminal
 
 php artisan migrate
 
-And voila!
+# Step 6
+To create your first CMS user, go to the following route:
+
+/cms/register
+
+And voila! You're all set.
+
+#IMPORTANT:
+every time you add a table, or column, you need to run these 2 routes while logged in, to configure the cms:
+
+/cms/configure
+/cms/configureTables
+
+
