@@ -1,8 +1,16 @@
 # XTND CMS
 A simple content management system for laravel 
 
-# Step 1
+# Installation
 Install the package via composer using "composer require xtnd/cms"
+
+# Setup
+
+# Step 1
+
+Add to the autoload/psr-4 object in the composer.json file in your project's root the following:
+
+"Xtnd\\Cms\\": "vendor/xtnd/cms/src"
 
 # Step 2
 Add to the providers array in config/app.php the following:
