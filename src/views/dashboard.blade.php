@@ -1,4 +1,4 @@
-@extends('calculator::layout.layout')
+@extends('cms::layout.layout')
 @section('main-content')
 <section class="content">
     <div class="container-fluid">
