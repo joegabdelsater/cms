@@ -45,7 +45,7 @@ class CmsUsersController extends Controller
 
        $user = array(
            'name' => 'admin',
-           'email' => 'admin1@admin.com',
+           'email' => 'admin@admin.com',
             'password' => Hash::make('password')
        );
            

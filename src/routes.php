@@ -1,5 +1,5 @@
 <?php 
-Route::get('cms/login', 'Xtnd\Cms\CmsUsersController@show')->name('login')->middleware('web');
+Route::get('cms/login', 'Xtnd\Cms\CmsUsersController@show')->name('cmslogin')->middleware('web');
 Route::post('cms/login', 'Xtnd\Cms\CmsUsersController@authenticate')->middleware('web');
 Route::get('cms/register', 'Xtnd\Cms\CmsUsersController@register');
 
