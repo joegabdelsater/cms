@@ -1,12 +1,12 @@
 <?php
 
-namespace Devdojo\Calculator;
+namespace Xtnd\Cms;
 // namespace App\Providers;
 
 
 use Illuminate\Support\ServiceProvider;
 
-class CalculatorServiceProvider extends ServiceProvider
+class CmsServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap services.
@@ -17,7 +17,7 @@ class CalculatorServiceProvider extends ServiceProvider
     {
         include __DIR__ . '/routes.php';
         $this->loadMigrationsFrom(__DIR__.'/migrations');
-        $this->loadViewsFrom(__DIR__.'/views', 'calculator');
+        $this->loadViewsFrom(__DIR__.'/views', 'cms');
 
    
         $this->publishes([
@@ -34,7 +34,7 @@ class CalculatorServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->make('Devdojo\Calculator\CalculatorController');
+        $this->app->make('Xtnd\Cms\CmsController');
 
     }
 }

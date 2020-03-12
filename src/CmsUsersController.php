@@ -1,8 +1,8 @@
 <?php
 
-namespace Devdojo\Calculator;
+namespace Xtnd\Cms;
 
-use Devdojo\Calculator\CmsUser;
+use Xtnd\Cms\CmsUser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -21,7 +21,7 @@ class CmsUsersController extends Controller
     public function show()
     {   
         
-        return view('calculator::login');
+        return view('cms::login');
     }
 
     public function authenticate(Request $request)

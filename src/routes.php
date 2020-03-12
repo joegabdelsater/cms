@@ -1,23 +1,23 @@
 <?php 
-Route::get('cms/login', 'Devdojo\Calculator\CmsUsersController@show')->name('login')->middleware('web');
-Route::post('cms/login', 'Devdojo\Calculator\CmsUsersController@authenticate')->middleware('web');
-Route::get('cms/register', 'Devdojo\Calculator\CmsUsersController@register');
+Route::get('cms/login', 'Xtnd\Cms\CmsUsersController@show')->name('login')->middleware('web');
+Route::post('cms/login', 'Xtnd\Cms\CmsUsersController@authenticate')->middleware('web');
+Route::get('cms/register', 'Xtnd\Cms\CmsUsersController@register');
 
 
 Route::group(['middleware' => ['web', 'auth:cms_user']], function () {
     // web routes
-  Route::get('cms/dashboard', 'Devdojo\Calculator\CalculatorController@index');
-  Route::get('cms/table/{table}', 'Devdojo\Calculator\CalculatorController@view');
+  Route::get('cms/dashboard', 'Xtnd\Cms\CmsController@index');
+  Route::get('cms/table/{table}', 'Xtnd\Cms\CmsController@view');
 
-  Route::get('cms/configure', 'Devdojo\Calculator\CalculatorController@configureCmsFields');
-  Route::get('cms/configureTables', 'Devdojo\Calculator\CalculatorController@configureTables');
+  Route::get('cms/configure', 'Xtnd\Cms\CmsController@configureCmsFields');
+  Route::get('cms/configureTables', 'Xtnd\Cms\CmsController@configureTables');
 
-  Route::get('cms/createEntry/{table}', 'Devdojo\Calculator\CalculatorController@create');
-  Route::get('cms/edit/{table}/{entry}', 'Devdojo\Calculator\CalculatorController@create');
-  Route::post('cms/create/{table}', 'Devdojo\Calculator\CalculatorController@store');
-  Route::post('cms/update/{table}', 'Devdojo\Calculator\CalculatorController@update');
-  Route::get('cms/delete/{table}/{entryId}', 'Devdojo\Calculator\CalculatorController@destroy');
-Route::get('cms/logout', 'Devdojo\Calculator\CmsUsersController@logout');
+  Route::get('cms/createEntry/{table}', 'Xtnd\Cms\CmsController@create');
+  Route::get('cms/edit/{table}/{entry}', 'Xtnd\Cms\CmsController@create');
+  Route::post('cms/create/{table}', 'Xtnd\Cms\CmsController@store');
+  Route::post('cms/update/{table}', 'Xtnd\Cms\CmsController@update');
+  Route::get('cms/delete/{table}/{entryId}', 'Xtnd\Cms\CmsController@destroy');
+Route::get('cms/logout', 'Xtnd\Cms\CmsUsersController@logout');
 
 });
 ?>

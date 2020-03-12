@@ -1,6 +1,6 @@
 <?php
 
-namespace Devdojo\Calculator;
+namespace Xtnd\Cms;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use PharIo\Version\OrVersionConstraintGroup;
 
-class CalculatorController extends Controller
+class CmsController extends Controller
 {
     private $excludes = ['migrations', 'password_resets', 'cms_field_configuration', 'cms_tables_configuration'];
     private $dbName;
@@ -21,7 +21,7 @@ class CalculatorController extends Controller
     public function index()
     {
         $tables = $this->getTables();
-        return view('calculator::dashboard', compact('tables'));
+        return view('cms::dashboard', compact('tables'));
     }
 
     public function view(Request $request)
@@ -75,7 +75,7 @@ class CalculatorController extends Controller
         }
 
       
-        return view('calculator::table', compact('results', 'columns', 'tableName', 'tables', 'table'));
+        return view('cms::table', compact('results', 'columns', 'tableName', 'tables', 'table'));
     }
 
     public function create(Request $request)
@@ -123,7 +123,7 @@ class CalculatorController extends Controller
         }
 
 
-        return view('calculator::form', $compactArray);
+        return view('cms::form', $compactArray);
     }
 
     public function store(Request $request)

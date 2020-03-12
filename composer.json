@@ -1,10 +1,24 @@
-{"name": "devdojo/calculator",
-    "description": "This demo package will do some calculations",
-    "authors": [
-        {
-            "name": "Tony lea",
-            "email": "tony@devdojo.com"
+    {
+        "name": "xtnd/cms",
+        "type": "library",
+        "description": "Content management system for laravel 5.6.*",
+        "keywords": ["cms"],
+        "homepage": "https://github.com/joegabdelsater/cms",
+        "license": "",
+        "authors": [
+            {
+                "name": "Joe Abdel Sater",
+                "email": "joe@xtnd.io",
+                "homepage": "https://www.xtnd.io",
+                "role": "COO"
+            }
+        ],
+        "require": {
+            "php": ">=7.1.3"
+        },
+        "autoload": {
+            "psr-0": {
+                "Monolog": "src"
+            }
         }
-    ],
-    "minimum-stability": "dev",
-    "require": {}}
+    }

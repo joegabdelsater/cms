@@ -1,6 +1,6 @@
 <?php
 
-namespace Devdojo\Calculator;
+namespace Xtnd\Cms;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;  // Import Hash facade
