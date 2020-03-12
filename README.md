@@ -47,6 +47,7 @@ And voila! You're all set.
 every time you add a table, or column, you need to run these 2 routes while logged in, to configure the cms:
 
 /cms/configure
+
 /cms/configureTables
 
 
