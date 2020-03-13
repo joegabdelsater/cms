@@ -2,7 +2,7 @@
 A simple content management system for laravel 
 
 # Installation
-Install the package via composer using "composer require xtnd/cms"
+Install the package via composer using "composer require xtnd/cms" and follow the 5 simple steps below.
 
 # Setup
 
@@ -39,12 +39,9 @@ composer dump-autoload
 
 php artisan vendor:publish --tag=public --force
 
-# Step 5
-Run the following command in terminal 
-
 php artisan migrate
 
-# Step 6
+# Step 5
 To create your first CMS user, go to the following route:
 
 /cms/register
