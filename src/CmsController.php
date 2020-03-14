@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-use PharIo\Version\OrVersionConstraintGroup;
+use Illuminate\Support\Facades\Hash;  // Import Hash facade
+
+// use PharIo\Version\OrVersionConstraintGroup;
 
 class CmsController extends Controller
 {
@@ -140,6 +142,10 @@ class CmsController extends Controller
         $table = $clean['table'];
         unset($clean['table']);
         unset($clean['id']);
+
+        if($table == 'cms_users'){
+            $clean['password'] = Hash::make($clean['password']);
+        }
 
         if ($request->has('image')) {
             $imageName = time() . '.' . request()->image->getClientOriginalExtension();
