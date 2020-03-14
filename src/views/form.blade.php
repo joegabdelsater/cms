@@ -42,30 +42,27 @@
 
                         {{-- date --}}
                         @if($field->field_type == 'date')
-
                         <div class="form-group">
                             <label>{{$field->display_name}}</label>
-
-                            <div class="input-group">
+                            <div class='input-group date'>
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                 </div>
-                            <input type="text" class="form-control" data-inputmask-alias="datetime" value="{{old($field->field_name, $field->field_value ? $field->field_value : "")}}" data-inputmask-inputformat="dd-mm-yyyy" data-mask name="{{$field->field_name}}">
+                                <input type='text' class="form-control datetimepicker"  name="{{$field->field_name}}" value="{{old($field->field_name, $field->field_value ? $field->field_value : "")}}"/>
                             </div>
-                            <!-- /.input group -->
                         </div>
                         @endif
+                        
 
                         @if($field->field_type == 'datetime')
                         <div class="form-group">
                             <label>{{$field->display_name}}</label>
-                        <div class="input-group date" id="timepicker{{$k}}" data-target-input="nearest">
-                        <input type="text" class="form-control datetimepicker-input" id="datetimepicker1" data-target="#timepicker{{$k}}"  name="{{$field->field_name}}" value="{{old($field->field_name, $field->field_value ? $field->field_value : "")}}"/>
-                        <div class="input-group-append" data-target="#timepicker{{$k}}" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="fas fa-clock"></i></div>
+                            <div class='input-group date'>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                 </div>
-                                </div>
-                            <!-- /.input group -->
+                                <input type='text' class="form-control datetimepicker"  name="{{$field->field_name}}" value="{{old($field->field_name, $field->field_value ? $field->field_value : "")}}"/>
+                            </div>
                         </div>
                         @endif
 

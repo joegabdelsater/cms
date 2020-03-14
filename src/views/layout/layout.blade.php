@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,6 +23,8 @@
   <link rel="stylesheet" href="{{ URL::asset('vendor/xtnd/cms/plugins/jqvmap/jqvmap.min.css')}}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ URL::asset('vendor/xtnd/cms/dist/css/adminlte.min.css')}}">
+  <link rel="stylesheet" href="{{ URL::asset('vendor/xtnd/cms/dist/css/jquery.datetimepicker.css')}}">
+
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{ URL::asset('vendor/xtnd/cms/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
   <!-- Daterange picker -->
@@ -32,24 +36,21 @@
   <link rel="stylesheet" href="{{ URL::asset('vendor/xtnd/cms/plugins/select2/css/select2.min.css')}}">
 
   <link rel="stylesheet" href="{{URL::asset('vendor/xtnd/cms/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
-
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 
 <style>
-  .content-wrapper{
-      width:100%;
-  }
+    .content-wrapper{
+        width:100%;
+    }
 
-  .main-header{
-    width: 100%;
-  }
+    .main-header{
+        width:100%;
+    }
 </style>
-
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -184,7 +185,7 @@
            style="opacity: .8">
       <span class="brand-text font-weight-light">XTND CMS</span>
     </a>
-
+   
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
@@ -193,7 +194,7 @@
           <img src="{{ URL::asset('vendor/xtnd/cms/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{Auth::user()->name}}</a>
+        <a href="#" class="d-block">{{Auth::user()->name}}</a>
         </div>
       </div>
 
@@ -772,7 +773,7 @@
 <!-- ChartJS -->
 <script src="{{ URL::asset('vendor/xtnd/cms/plugins/chart.js/Chart.min.js')}}"></script>
 <!-- Sparkline -->
-<script src="{{ URL::asset('vendor/xtnd/cms/plugins/sparklines/sparkline.js')}}"></script>
+{{--  <script src="{{ URL::asset('vendor/xtnd/cms/plugins/sparklines/sparkline.js')}}"></script>  --}}
 <!-- JQVMap -->
 <script src="{{ URL::asset('vendor/xtnd/cms/plugins/jqvmap/jquery.vmap.min.js')}}"></script>
 <script src="{{ URL::asset('vendor/xtnd/cms/plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
@@ -782,7 +783,8 @@
 <script src="{{ URL::asset('vendor/xtnd/cms/plugins/moment/moment.min.js')}}"></script>
 <script src="{{ URL::asset('vendor/xtnd/cms/plugins/daterangepicker/daterangepicker.js')}}"></script>
 <!-- Tempusdominus Bootstrap 4 -->
-<script src="{{ URL::asset('vendor/xtnd/cms/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
+{{--  <script src="{{ URL::asset('vendor/xtnd/cms/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>  --}}
+<script src="{{ URL::asset('vendor/xtnd/cms/plugins/jquery.datetimepicker.full.min.js')}}"></script>
 <!-- Summernote -->
 <script src="{{ URL::asset('vendor/xtnd/cms/plugins/summernote/summernote-bs4.min.js')}}"></script>
 <!-- overlayScrollbars -->
@@ -790,7 +792,7 @@
 <!-- AdminLTE App -->
 <script src="{{ URL::asset('vendor/xtnd/cms/dist/js/adminlte.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{ URL::asset('vendor/xtnd/cms/dist/js/pages/dashboard.js')}}"></script>
+{{--  <script src="{{ URL::asset('vendor/xtnd/cms/dist/js/pages/dashboard.js')}}"></script>  --}}
 
 <script src="{{ URL::asset('vendor/xtnd/cms/plugins/datatables/jquery.dataTables.js')}}"></script>
 <script src="{{ URL::asset('vendor/xtnd/cms/plugins/datatables-bs4/js/dataTables.bootstrap4.js')}}"></script>
@@ -808,9 +810,21 @@
 
 <script>
     $(function () {
-        $('.timepicker').datetimepicker({
-      format: 'LT'
-    })
+
+        // $('#datetimepicker99').datetimepicker({
+        //     icons: {
+        //             time: "fa fa-clock-o",
+        //             date: "fa fa-calendar",
+        //             up: "fa fa-arrow-up",
+        //             down: "fa fa-arrow-down"
+        //         },
+        //         format: 'DD-MM-YYYY HH:ss'
+        // });
+
+
+    //     $('.timepicker').datetimepicker({
+    //   format: 'LT'
+    // })
         $('[data-mask]').inputmask()
         $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd-mm-yyyy' })
 
@@ -833,10 +847,23 @@
     // Summernote 
     $('.textarea').summernote();
 
-    $('#datetimepicker1').datetimepicker({
-        format: 'Y-m-d H:i'
-      });
+    // $('#datetimepicker').datetimepicker();
+    $('.datetimepicker').datetimepicker({
+        format:'yy-m-d h:s:i'
     });
+
+    
+    });
+
+
+
+//     $(body).on('focus', ".examDate", function() {
+//         $(this).datetimepicker({
+//             format: 'DD-MM-YYYY HH:ss',
+//             ignoreReadonly: true,
+//             showTodayButton: true
+//         });
+// });
   </script>
 </body>
 </html>
