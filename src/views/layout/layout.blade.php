@@ -59,6 +59,10 @@
   .content-wrapper{
       width:100%;
   }
+
+  .main-header{
+    width: 100%;
+  }
 </style>
 
 <body class="hold-transition sidebar-mini layout-fixed">

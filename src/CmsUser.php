@@ -3,7 +3,7 @@
 namespace Xtnd\Cms;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Hash;  // Import Hash facade
+// use Illuminate\Support\Facades\Hash;  // Import Hash facade
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
