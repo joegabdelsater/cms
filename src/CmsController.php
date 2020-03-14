@@ -40,11 +40,11 @@ class CmsController extends Controller
 
         $fields = $this->getConfiguredFields($request->table);
         $columns = array();
-       
+
         $index = 0;
         foreach ($_columns as $column) {
             foreach ($fields as $field) {
-                if($column == $field->field_name){
+                if ($column == $field->field_name) {
                     $index++;
                     $columns[$index]['column_display_name'] = str_replace("_", " ", ucFirst($field->field_name));
                     $columns[$index]['column_name'] = $field->field_name;
@@ -76,7 +76,7 @@ class CmsController extends Controller
             }
         }
 
-      
+
         return view('cms::table', compact('results', 'columns', 'tableName', 'tables', 'table'));
     }
 
@@ -118,8 +118,11 @@ class CmsController extends Controller
             $values = json_decode(json_encode($values), true);
 
             foreach ($fields as $field) {
-
-                $field->field_value = $values[$field->field_name];
+                if ($field->table_name == 'cms_users' && $field->field_name == 'password') {
+                    $field->field_value = null;
+                } else {
+                    $field->field_value = $values[$field->field_name];
+                }
             }
             $compactArray['entryId'] = $request->route('entry');
         }
@@ -143,7 +146,7 @@ class CmsController extends Controller
         unset($clean['table']);
         unset($clean['id']);
 
-        if($table == 'cms_users'){
+        if ($table == 'cms_users') {
             $clean['password'] = Hash::make($clean['password']);
         }
 
@@ -175,6 +178,12 @@ class CmsController extends Controller
 
         unset($clean['table']);
         unset($clean['entry']);
+
+        if ($table === 'cms_users' && trim($clean['password']) !== '') {
+            $clean['password'] = Hash::make($clean['password']);
+        }else{
+            unset($clean['password']);
+        }
 
         DB::table($table)
             ->where('id', $entry)
