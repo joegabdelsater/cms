@@ -849,7 +849,7 @@
 
     // $('#datetimepicker').datetimepicker();
     $('.datetimepicker').datetimepicker({
-        format:'yy-m-d h:s:i'
+        format:'yy-m-d h:i:s'
     });
 
     
