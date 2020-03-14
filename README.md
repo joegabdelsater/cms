@@ -42,6 +42,40 @@ php artisan vendor:publish --tag=public --force
 php artisan migrate
 
 # Step 5
+
+In app/exceptions/handler.php:
+
+Add to the top the following:
+
+use Illuminate\Auth\AuthenticationException;
+
+And add to the class the following function to redirect unauthenticated routes to the login page:
+
+
+    protected function unauthenticated($request, AuthenticationException $exception){   
+
+        if ($request->expectsJson()) {
+            return response()->json(['message' => $exception->getMessage()], 401);
+        }
+
+
+
+        $guard = array_get($exception->guards(),0);
+        switch ($guard) {
+            case 'cms_user':
+                $login = 'cmslogin';
+                break;
+
+            default:
+                $login = 'login';
+                break;
+        }
+
+        return redirect()->guest(route($login));
+    }
+
+
+# Step 6
 To create your first CMS user, go to the following route:
 
 /cms/register
