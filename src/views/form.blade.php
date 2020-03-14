@@ -48,7 +48,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                 </div>
-                                <input type='text' class="form-control datetimepicker"  name="{{$field->field_name}}" value="{{old($field->field_name, $field->field_value ? $field->field_value : "")}}"/>
+                                <input type='text' class="form-control datetimepicker"  name="{{$field->field_name}}" value="{{old($field->field_name, $field->field_value ? $field->field_value : date("Y-m-d H:i:s"))}}"/>
                             </div>
                         </div>
                         @endif
@@ -61,7 +61,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                 </div>
-                                <input type='text' class="form-control datetimepicker"  name="{{$field->field_name}}" value="{{old($field->field_name, $field->field_value ? $field->field_value : "")}}"/>
+                                <input type='text' class="form-control datetimepicker"  name="{{$field->field_name}}" value="{{old($field->field_name, $field->field_value ? $field->field_value : date("Y-m-d H:i:s"))}}"/>
                             </div>
                         </div>
                         @endif

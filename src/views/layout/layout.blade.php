@@ -809,7 +809,7 @@
 
 
 <script>
-    $(function () {
+    $(document).ready(function () {
 
         // $('#datetimepicker99').datetimepicker({
         //     icons: {
@@ -849,21 +849,15 @@
 
     // $('#datetimepicker').datetimepicker();
     $('.datetimepicker').datetimepicker({
-        format:'yy-m-d h:i:s'
+        format:'yy-m-d h:i:s',
     });
 
     
-    });
+});
 
 
 
-//     $(body).on('focus', ".examDate", function() {
-//         $(this).datetimepicker({
-//             format: 'DD-MM-YYYY HH:ss',
-//             ignoreReadonly: true,
-//             showTodayButton: true
-//         });
-// });
+
   </script>
 </body>
 </html>
