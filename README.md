@@ -51,6 +51,7 @@ use Illuminate\Auth\AuthenticationException;
 
 And add to the class the following function to redirect unauthenticated routes to the login page:
 
+    use Illuminate\Auth\AuthenticationException;
 
     protected function unauthenticated($request, AuthenticationException $exception){   
 
