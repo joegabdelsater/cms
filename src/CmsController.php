@@ -31,7 +31,6 @@ class CmsController extends Controller
         if (!in_array($request->table, $this->getTables())) {
             die('This table does not exist');
         }
-
         $table = $request->table;
         $tables = $this->getTables();
         $tableName = $request->table;
@@ -53,29 +52,32 @@ class CmsController extends Controller
             }
         }
 
-        //get all table
-        $results = DB::table($request->table)->get()->toArray();
-        //tranform from stf Object to array
-        $results = json_decode(json_encode($results), true);
+        //prepare the query
+        $resultsQuery =  DB::table($request->table);
+        //check if the table has any queries
+        $foreignFields = DB::table('cms_field_configuration')
+            ->select(DB::raw('cms_field_configuration.*, cms_tables_configuration.foreign_display_field as foreign_display_field'))->where([
+                'table_name' => $table,
+                'field_type' => 'foreign'
+            ])->join('cms_tables_configuration', 'cms_field_configuration.foreign_table', 'cms_tables_configuration.table')->get();
 
-        $foreignFields = json_decode(json_encode(DB::table('cms_field_configuration')->where([
-            'table_name' => $table,
-            'field_type' => 'foreign'
-        ])->get()), true);
-
-        if (sizeOf($foreignFields)) {
-            foreach ($results as &$result) {
-                foreach ($result as $resultColumn => $resultValues)
-                    foreach ($foreignFields as $field) {
-                        if ($field['field_name'] == $resultColumn) {
-                            $foreignDisplayField = $this->getForeignDisplayField($field['foreign_table']);
-                            $result[$resultColumn] = json_decode(json_encode(DB::table($field['foreign_table'])->where('id', $resultValues)->first()), true);
-                            $result[$resultColumn] = $result[$resultColumn][$foreignDisplayField];
-                        }
-                    }
+        if ($foreignFields->isEmpty()) {
+           $results = $resultsQuery->get()->toArray();
+        }else{
+            $selectString = "{$request->table}.*";
+            foreach ($foreignFields as $foreignField) {
+                $selectString = $selectString . ", {$foreignField->foreign_table}.{$foreignField->foreign_display_field} as {$foreignField->field_name}";
+                $resultsQuery->join(
+                    $foreignField->foreign_table,
+                    $foreignField->foreign_table . '.' . $foreignField->foreign_field,
+                    $foreignField->table_name . '.' . $foreignField->field_name
+                );
             }
+
+           $results = $resultsQuery->select(DB::raw($selectString))->get()->toArray();
         }
 
+        $results = json_decode(json_encode($results), true);
 
         return view('cms::table', compact('results', 'columns', 'tableName', 'tables', 'table'));
     }
@@ -181,7 +183,7 @@ class CmsController extends Controller
 
         if ($table === 'cms_users' && trim($clean['password']) !== '') {
             $clean['password'] = Hash::make($clean['password']);
-        }else{
+        } else {
             unset($clean['password']);
         }
 
@@ -207,6 +209,7 @@ class CmsController extends Controller
 
     private function getForeignDisplayField($table)
     {
+
         return DB::table('cms_tables_configuration')->select('foreign_display_field')->where('table', $table)->first()->foreign_display_field;
     }
 
@@ -414,6 +417,8 @@ class CmsController extends Controller
 
     private function guessForeignTable($foreignField)
     {
+
+
         if (strpos($foreignField, '_id') !== false) {
             return str_replace("_id", "", $foreignField) . 's';
         }
