@@ -10,7 +10,7 @@ Install the package via composer using "composer require xtnd/cms" and follow th
 
 Add to the autoload/psr-4 object in the composer.json file in your project's root the following:
 
-"Xtnd\\Cms\\": "vendor/xtnd/cms/src"
+"Xtnd\\\Cms\\\\": "vendor/xtnd/cms/src"
 
 # Step 2
 Add to the providers array in config/app.php the following:
